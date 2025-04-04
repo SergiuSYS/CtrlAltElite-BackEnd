@@ -1,0 +1,6 @@
+@CtrlAltElite_BackEnd_HostAddress = http://localhost:5058
+
+GET {{CtrlAltElite_BackEnd_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
