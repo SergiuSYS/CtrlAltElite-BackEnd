@@ -21,6 +21,18 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,7 +42,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 //custom stuf
-app.MapIdentityApi<IdentityUser>(); 
+app.MapIdentityApi<IdentityUser>();
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
