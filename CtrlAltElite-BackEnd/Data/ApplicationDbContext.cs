@@ -10,6 +10,6 @@ namespace CtrlAltElite_BackEnd.Data
 
         }
         public DbSet<Room> rooms {  get; set; }
-        public DbSet<RoomMembers> roomsMembers { get; set; }
+        public DbSet<RoomUserAssociation> roomUserAssociation { get; set; }
     }
 }
