@@ -8,7 +8,7 @@ namespace CtrlAltElite_BackEnd.Migrations
     public partial class BackToIdentityuser : Migration
     {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder migrationBuilder)   
         {
             migrationBuilder.DropColumn(
                 name: "Discriminator",

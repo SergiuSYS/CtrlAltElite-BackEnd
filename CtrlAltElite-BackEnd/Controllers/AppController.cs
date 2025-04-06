@@ -83,7 +83,8 @@ namespace CtrlAltElite_BackEnd.Controllers
             await _context.rooms.AddAsync(room);
             await _context.roomUserAssociation.AddAsync(roomUserAssociation);
             await _context.SaveChangesAsync();
-            return Ok(room.Id);
+            var data = new { message = "new" };
+            return Ok(data);
         }
 
         [Authorize]
@@ -181,7 +182,18 @@ namespace CtrlAltElite_BackEnd.Controllers
                 }
             }
             return Ok(users);
-
         }
+        [HttpGet("GetCurrentUserId")]
+        [Authorize]
+        public IActionResult GetCurrentUserId()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+            return Ok(new { userId });
+        }
+
     }
 }
